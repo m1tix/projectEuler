@@ -1,4 +1,4 @@
-from math import gcd, log, ceil
+from math import gcd, log, ceil, prod, sqrt
 import utils
 
 
@@ -79,13 +79,32 @@ def problem6(n):
 def problem7(n):
     # returns the n-th prime, bound is a corollary of prime number theorem
     # assuming n >= 6 ;)
-    primeList = utils.sieve_erasosthenes(ceil(n*log(n) + n*log(log(n))))
+    primeList = utils.sieve_eratosthenes(ceil(n*log(n) + n*log(log(n))))
     return primeList[n-1]
 
 
 def problem8(n, k):
     # returns the largest product of k consecutive integers in n
-    return n, k
+    if n < k:
+        raise ValueError('n is too small')
+    entries = [str(n)[i:i+k] for i in range(len(str(n)) - k + 1)]
+    return max(map(lambda x: prod(int(i) for i in x), entries))
 
 
-print(problem7(1000))
+def problem9(n):
+    # returns the largest product abc of all pythagorean triples (a,b,c) such
+    # a + b + c = n. Can be optimised but whatever
+    if n % 2:
+        return -1
+    triples = []
+    for a in range(3, ceil(n/3) + 1):
+        for c in range(ceil(n/3) + 1, ceil(n/2) + 1):
+            b = n - a - c
+            if a**2 + b**2 == c**2:
+                triples.append((a, b, c))
+    if triples:
+        return max(d[0]*d[1]*d[2] for d in triples if d[0] + d[1] + d[2] == n)
+    return -1
+
+
+print(problem9(3000))

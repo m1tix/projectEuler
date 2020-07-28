@@ -1,14 +1,15 @@
 from math import sqrt, ceil
 
 
-def sieve_erasosthenes(n):
+def sieve_eratosthenes(n):
     # generates primes <= n with sieve of erasosthenes
     primeList = [0]*2 + [1] * (n-1)
     for i in range(ceil(sqrt(n)) + 1):
         if primeList[i]:
             for j in range(i**2, n+1, i):
-                primeList[j] = False
-    return [i for i, prime in enumerate(primeList) if prime]
+                primeList[j] = 0
+    # return [i for i, prime in enumerate(primeList) if prime]
+    return [primeList[:i] for i in range(1, n + 2)]
 
 
 def miller_rabin(n):
@@ -20,7 +21,7 @@ def miller_rabin(n):
         It is possible to implement the deterministic Miller-Rabin test for
         larger values of n, although this is not needed for now.
     '''
-    bounds = [(2047, (2)),
+    bounds = [(2047, (2,)),
               (1373653, (2, 3)),
               (9080191, (31, 73)),
               (25326001, (2, 3, 5)),
@@ -42,11 +43,20 @@ def miller_rabin(n):
         r += 1
         d = d >> 1
 
-    # Function to determine if a number is composite. If false, then it is not
-    # certain that the number is prime.
     def composite(a, n, r, d):
+        '''
+            Function to determine if a number is composite. If true, then the
+            number is certainly prime, but if false the number need not be
+            prime.
+            The function works because if n = 2^r * d + 1 is prime, then for
+            all numbers a relatively prime to n we have
+
+              a^(2^r*d) - 1 = (a^d - 1)(a^(2d) + 1)...(a^(2^r*d) + 1) = 0 mod n
+
+            hence the validity of the function.
+        '''
         x = pow(a, d, n)
-        if x == 1:
+        if x in (1, n - 1):
             return False
         for _ in range(r-1):
             x = pow(x, 2, n)
@@ -59,4 +69,4 @@ def miller_rabin(n):
             return not any(composite(a, n, r, d) for a in m[1])
 
 
-print(miller_rabin(13103))
+print(sieve_eratosthenes(10))
