@@ -107,4 +107,5 @@ def problem9(n):
     return -1
 
 
-print(problem9(3000))
+if __name__ == "__main__":
+    print(problem9(3000))

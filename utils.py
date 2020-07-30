@@ -1,4 +1,4 @@
-from math import sqrt, ceil
+from math import sqrt, ceil, prod
 
 
 def sieve_eratosthenes(n):
@@ -8,8 +8,7 @@ def sieve_eratosthenes(n):
         if primeList[i]:
             for j in range(i**2, n+1, i):
                 primeList[j] = 0
-    # return [i for i, prime in enumerate(primeList) if prime]
-    return [primeList[:i] for i in range(1, n + 2)]
+    return [i for i, prime in enumerate(primeList) if prime]
 
 
 def miller_rabin(n):
@@ -69,4 +68,33 @@ def miller_rabin(n):
             return not any(composite(a, n, r, d) for a in m[1])
 
 
-print(sieve_eratosthenes(10))
+def factor(n):
+    '''
+        Returns the factors of n in a list of tuples with exponents.
+        Uses sieve of eratosthenes to generate primes, so only useful for,
+        rougly speaking, small numbers. Should use ECM for larger numbers.
+        Can possibly be optimized by first storing a few small primes to test
+        and possibly lower n.
+    '''
+    factors = []
+    possiblePrimes = sieve_eratosthenes(n)
+    for prime in possiblePrimes:
+        exp = 0
+        while n % prime == 0:
+            exp += 1
+            n = n // prime
+        if exp != 0:
+            factors.append((prime, exp))
+    return factors
+
+
+def number_divisors(n):
+    '''
+        returns the number of divisors of n
+    '''
+    factors = factor(n)
+    return prod(k[1] + 1 for k in factors)
+
+
+if __name__ == "__main__":
+    print(number_divisors(124510))
