@@ -77,7 +77,7 @@ def factor(n):
         and possibly lower n.
     '''
     factors = []
-    possiblePrimes = sieve_eratosthenes(n)
+    possiblePrimes = sieve_eratosthenes(ceil(sqrt(n)))
     for prime in possiblePrimes:
         exp = 0
         while n % prime == 0:
@@ -85,6 +85,8 @@ def factor(n):
             n = n // prime
         if exp != 0:
             factors.append((prime, exp))
+    if n != 1:
+        return factors + [(n, 1)]
     return factors
 
 
@@ -97,4 +99,4 @@ def number_divisors(n):
 
 
 if __name__ == "__main__":
-    print(number_divisors(124510))
+    print(factor(12375*(12375 + 1) >> 1))
