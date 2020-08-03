@@ -1,18 +1,4 @@
-import utils
-
-
-def problem010(n):
-    '''
-        Returns the sum of the first n primes
-    '''
-    return sum(utils.sieve_eratosthenes(n))
-
-
-def problem011(grid):
-    '''
-        Returns the greatest product of four adjacent numbers in some direction
-        of the grid.
-    '''
+from Utils import utils
 
 
 def problem012(bound):
@@ -36,4 +22,4 @@ def problem012(bound):
 
 
 if __name__ == "__main__":
-    pass
+    print(problem012(500))
