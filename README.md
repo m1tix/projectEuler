@@ -6,4 +6,4 @@ of divisors to prevent recomputing.
 
 ### TODO
 
-- [ ] Problem 14: the current version does not bode well with the Hackerrank version. Possibly changing the dictionary to a list/tuple?
+- [x] Problem 14: the current version does not bode well with the Hackerrank version. Possibly changing the dictionary to a list/tuple?
