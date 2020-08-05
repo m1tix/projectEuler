@@ -7,4 +7,4 @@ def problem016(n):
 
 
 if __name__ == "__main__":
-    print(problem016(10**4))
+    print(problem016(10**3))
