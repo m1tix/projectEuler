@@ -1,4 +1,5 @@
 from math import sqrt, ceil, prod
+from itertools import product
 
 
 def sieve_eratosthenes(n):
@@ -92,11 +93,19 @@ def factor(n):
 
 def number_divisors(n):
     '''
-        returns the number of divisors of n
+        Returns the number of divisors of n
     '''
     factors = factor(n)
     return prod(k[1] + 1 for k in factors)
 
 
+def sum_divisors(n):
+    '''
+        Returns the sum of the divisors of n
+    '''
+    factors = factor(n)
+    return prod((x[0]**(x[1]+1) - 1) // (x[0] - 1) for x in factors) - n
+
+
 if __name__ == "__main__":
-    print(factor(12375*(12375 + 1) >> 1))
+    print(sum_divisors(220))
