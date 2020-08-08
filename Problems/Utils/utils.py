@@ -1,5 +1,5 @@
 from math import sqrt, ceil, prod
-from itertools import product
+import timeit
 
 
 def sieve_eratosthenes(n):
@@ -101,11 +101,49 @@ def number_divisors(n):
 
 def sum_divisors(n):
     '''
-        Returns the sum of the divisors of n
+        Returns the sum of the proper divisors of n.
     '''
     factors = factor(n)
-    return prod((x[0]**(x[1]+1) - 1) // (x[0] - 1) for x in factors) - n
+    return prod((p**(e+1) - 1) // (p-1) for p, e in factors) - n
+
+
+def is_perfect(n):
+    '''
+        Returns True when n is perfect and False otherwise. A number n is
+        perfect when sum_divisors(n) == n
+    '''
+    return sum_divisors(n) == n
+
+
+def is_deficient(n):
+    '''
+        Returns True if n is deficient and False otherwise. A number k is
+        deficient when sum_divisors(k) < k
+    '''
+    return sum_divisors(n) < n
+
+
+def is_abundant(n):
+    '''
+        Returns True if n is abundant and False otherwise. A number k is
+        abundant when sum_divisors(k) > k, i.e. it is not perfect nor deficient
+    '''
+    return sum_divisors(n) > n
+
+
+def generate_abundant(n):
+    '''
+        Returns a list where the i-th entry is True when i is abundant and
+        False otherwise, i.e. it generates all the abundant numbers up to n
+    '''
+    abundantNumbers = [0]*(n+1)
+    for k in range(2, n+1):
+        if not abundantNumbers[k] and is_abundant(k):
+            for i in range(k, n + 1, k):
+                abundantNumbers[i] = 1
+    return abundantNumbers
 
 
 if __name__ == "__main__":
-    print(sum_divisors(220))
+    setup1 = "from __main__ import generate_abundant"
+    print(timeit.timeit("generate_abundant(10**5)", setup=setup1, number=1))
