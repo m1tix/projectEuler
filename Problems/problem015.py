@@ -11,7 +11,7 @@ def problem015(n, m):
         else it would not reach the lower right corner. Since the order of
         these steps does not matter, the final answer is (n + m choose m)
     '''
-    return comb(n+m, m)
+    return comb(n + m, m)
 
 
 if __name__ == "__main__":

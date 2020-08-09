@@ -9,4 +9,4 @@ def problem010(n):
 
 
 if __name__ == "__main__":
-    print(problem010(2*10**6))
+    print(problem010(2 * 10**6))

@@ -1,4 +1,3 @@
-
 def problem013(nList):
     '''
         Returns the first ten digits of the sum of 50 digits numbers in nList.

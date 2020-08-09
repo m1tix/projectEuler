@@ -7,7 +7,7 @@ def problem008(n, k):
     '''
     if n < k:
         raise ValueError('n is too small')
-    entries = [str(n)[i:i+k] for i in range(len(str(n)) - k + 1)]
+    entries = [str(n)[i:i + k] for i in range(len(str(n)) - k + 1)]
     return max(map(lambda x: prod(int(i) for i in x), entries))
 
 

@@ -8,13 +8,14 @@ def problem023():
         abundant numbers.
     '''
     B = 28123
-    abundantNumbers = [i for i, a in enumerate(utils.generate_abundant(B)) if
-                       a]
-    abundantSum = [0]*(B+1)
+    abundantNumbers = [
+        i for i, a in enumerate(utils.generate_abundant(B)) if a
+    ]
+    abundantSum = [0] * (B + 1)
     for pos, i in enumerate(abundantNumbers):
         for j in abundantNumbers[pos:]:
             if i + j <= B:
-                abundantSum[i+j] = 1
+                abundantSum[i + j] = 1
             else:
                 break
     return sum(i for i, a in enumerate(abundantSum) if not a)
@@ -27,8 +28,8 @@ def problem023_hackerrank(n):
     if n > 28123:
         return False
     abundantNumbers = utils.generate_abundant(n)
-    for k in range(1, ceil(n/2) + 1):
-        if abundantNumbers[k] and abundantNumbers[n-k]:
+    for k in range(1, ceil(n / 2) + 1):
+        if abundantNumbers[k] and abundantNumbers[n - k]:
             return True
     return False
 

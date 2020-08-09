@@ -14,16 +14,16 @@ def problem017(n):
             if n % 10 == 0:
                 return twoDigits[n // 10 - 2]
             rem = n // 10
-            return twoDigits[rem - 2] + " " + smallNumbers[n - 10*rem]
+            return twoDigits[rem - 2] + " " + smallNumbers[n - 10 * rem]
         rem = n // 100
         if n % 100 == 0:
             return smallNumbers[rem] + " hundred"
-        return smallNumbers[rem] + " hundred " + small_thousand(n - 100*rem)
+        return smallNumbers[rem] + " hundred " + small_thousand(n - 100 * rem)
 
     smallNumbers = ("zero", "one", "two", "three", "four", "five", "six",
                     "seven", "eight", "nine", "ten", "eleven", "twelve",
-                    "thirteen", "fourteen", "fifteen", "sixteen",
-                    "seventeen", "eighteen", "nineteen")
+                    "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+                    "eighteen", "nineteen")
     twoDigits = ("twenty", "thirty", "forty", "fifty", "sixty", "seventy",
                  "eighty", "ninety")
     powersTen = ("thousand", "million", "billion", "trillion")
@@ -32,7 +32,7 @@ def problem017(n):
         rem = n // 10**k
         if rem != 0:
             nString += small_thousand(rem) + " " + powersTen[k // 3 - 1] + " "
-            n = n - rem*10**k
+            n = n - rem * 10**k
     if n != 0:
         nString = nString + small_thousand(n)
     return nString.title()
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     for i in range(1, 1001):
         stri = problem017(i)
         sumNumbers += len(stri.replace(' ', ''))
-    print(sumNumbers + 99*9*3)
+    print(sumNumbers + 99 * 9 * 3)

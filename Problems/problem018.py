@@ -8,7 +8,7 @@ def problem018(triangle):
     upperRow = triangle[-2]
     # Apparently using range(len(..)) is bad form?
     for i, _ in enumerate(upperRow):
-        largest = max(lastRow[i:i+2])
+        largest = max(lastRow[i:i + 2])
         upperRow[i] += largest
     triangle = triangle[:-2] + [upperRow]
     return problem018(triangle)

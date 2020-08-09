@@ -8,17 +8,17 @@ def problem012(bound):
         relatively prime (or else a common prime factor divides 1)
     '''
     n = 1
-    totalProd = utils.number_divisors(n*(n+1) >> 1)
+    totalProd = utils.number_divisors(n * (n + 1) >> 1)
     while totalProd <= bound:
         n += 1
         if n % 2 == 0:
             prod1 = utils.number_divisors(n >> 1)
-            prod2 = utils.number_divisors(n+1)
+            prod2 = utils.number_divisors(n + 1)
         else:
             prod1 = utils.number_divisors(n)
-            prod2 = utils.number_divisors((n+1) >> 1)
+            prod2 = utils.number_divisors((n + 1) >> 1)
         totalProd = prod1 * prod2
-    return n*(n+1) >> 1
+    return n * (n + 1) >> 1
 
 
 if __name__ == "__main__":

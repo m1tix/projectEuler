@@ -6,23 +6,23 @@ def problem014(n):
         Collatz-sequence in collatzLength[n] and the current largest integer in
         the largest list for which the Collatz-sequence is the longest.
     '''
-    collatzLength = [0, 1, 2] + [0]*(n-2)
-    largest = [0, 1, 2] + [0]*(n-2)
-    for k in range(3, n+1):
+    collatzLength = [0, 1, 2] + [0] * (n - 2)
+    largest = [0, 1, 2] + [0] * (n - 2)
+    for k in range(3, n + 1):
         newk = k
         currLength = 0
         while newk != 1:
             if newk < n and collatzLength[newk] != 0:
                 finalLength = collatzLength[newk] + currLength
                 collatzLength[k] = finalLength
-                if finalLength >= collatzLength[largest[k-1]]:
+                if finalLength >= collatzLength[largest[k - 1]]:
                     largest[k] = k
                 else:
-                    largest[k] = largest[k-1]
+                    largest[k] = largest[k - 1]
                 break
             currLength += 1
             if newk % 2:
-                newk = 3*newk + 1
+                newk = 3 * newk + 1
             else:
                 newk = newk >> 1
     return largest

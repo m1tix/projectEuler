@@ -14,6 +14,7 @@ def problem003(n):
             if 1 < F < n:
                 return F
         return n
+
     factors = []
     if n % 2 == 0:
         factors.append(2)
