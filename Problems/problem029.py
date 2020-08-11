@@ -12,7 +12,10 @@ def problem029(n):
         euler problem can be bruteforced, but the hackerrank cannot.
     '''
     def f(j, m):
-        # Erdos multiplication table?
+        # Erdos multiplication table? (tfw open problem (if j = m))
+        # For j = 1: n-1
+        # For j = 2: n - 1 + ceil(n/2)
+        # For j = 3: n - 1 + ceil(n/2) + ceil(n/3) - ceil(n/6)
         return {i * k for i, k in product(range(1, j + 1), range(2, m + 1))}
 
     squareTerms = 0
@@ -27,4 +30,4 @@ def problem029(n):
 
 
 if __name__ == "__main__":
-    print(problem029(10**5))
+    print(problem029(100))

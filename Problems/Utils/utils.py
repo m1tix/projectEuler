@@ -11,6 +11,15 @@ def sieve_eratosthenes(n):
     return [i for i, prime in enumerate(primeList) if prime]
 
 
+def sieve_eratosthenes_raw(n):
+    primeList = [0] * 2 + [1] * (n - 1)
+    for i in range(ceil(sqrt(n)) + 1):
+        if primeList[i]:
+            for j in range(i**2, n + 1, i):
+                primeList[j] = 0
+    return primeList
+
+
 def miller_rabin(n):
     '''
         Determines primality of odd n with Miller-Rabin test (the deterministic
