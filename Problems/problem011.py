@@ -10,7 +10,7 @@ def problem011(grid):
     currMax = 0
     for i in range(20):
         for j in range(3, 23):
-            # this is awful but atleast readable?
+            # this is awful but atleast readable? (Autoformatter fucks it up)
             rightProd = grid[i][j] * grid[i][j + 1] * grid[i][j +
                                                               2] * grid[i][j +
                                                                            3]
@@ -30,7 +30,7 @@ def problem011(grid):
 if __name__ == "__main__":
     with open("Inputs/problem011.txt") as f:
         gridText = f.read().splitlines()
-    grid = []
+    gridInput = []
     for r in gridText:
-        grid.append([int(digit) for digit in r.split(' ')])
-    print(problem011(grid))
+        gridInput.append([int(digit) for digit in r.split(' ')])
+    print(problem011(gridInput))

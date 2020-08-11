@@ -1,13 +1,12 @@
 from math import sqrt, ceil, prod
-import timeit
 
 
 def sieve_eratosthenes(n):
     # generates primes <= n with sieve of erasosthenes
-    primeList = [0]*2 + [1] * (n-1)
+    primeList = [0] * 2 + [1] * (n - 1)
     for i in range(ceil(sqrt(n)) + 1):
         if primeList[i]:
-            for j in range(i**2, n+1, i):
+            for j in range(i**2, n + 1, i):
                 primeList[j] = 0
     return [i for i, prime in enumerate(primeList) if prime]
 
@@ -21,13 +20,9 @@ def miller_rabin(n):
         It is possible to implement the deterministic Miller-Rabin test for
         larger values of n, although this is not needed for now.
     '''
-    bounds = [(2047, (2,)),
-              (1373653, (2, 3)),
-              (9080191, (31, 73)),
-              (25326001, (2, 3, 5)),
-              (3215031751, (2, 3, 5, 7)),
-              (4759123141, (2, 7, 61)),
-              (1122004669633, (2, 13, 23, 1662803)),
+    bounds = [(2047, (2, )), (1373653, (2, 3)), (9080191, (31, 73)),
+              (25326001, (2, 3, 5)), (3215031751, (2, 3, 5, 7)),
+              (4759123141, (2, 7, 61)), (1122004669633, (2, 13, 23, 1662803)),
               (2152302898747, (2, 3, 5, 7, 11)),
               (3474749660383, (2, 3, 5, 7, 11, 13)),
               (341550071728321, (2, 3, 5, 7, 11, 13, 17)),
@@ -38,7 +33,7 @@ def miller_rabin(n):
     if n % 2 == 0:
         return 0
     # determine integers r and d such that n = 2^r * d + 1
-    r, d = 0, n-1
+    r, d = 0, n - 1
     while d % 2 == 0:
         r += 1
         d = d >> 1
@@ -58,15 +53,34 @@ def miller_rabin(n):
         x = pow(a, d, n)
         if x in (1, n - 1):
             return False
-        for _ in range(r-1):
+        for _ in range(r - 1):
             x = pow(x, 2, n)
-            if x == n-1:
+            if x == n - 1:
                 return False
         return True
 
     for m in bounds:
         if n < m[0]:
             return not any(composite(a, n, r, d) for a in m[1])
+
+
+def extended_euclidian(a, b):
+    '''
+        Given two integers a and b return (n,m,d) such that
+            an + bm = d,
+        with d = gcd(a,b). See Cohen's book 'A course in computational
+        algebraic number theory' p. 16.
+    '''
+    n, d = 1, a
+    if b == 0:
+        return (n, 0, d)
+    m = [0, b]
+    while m[1] != 0:
+        q = d // m[1]
+        t = [n - q * m[0], d % m[1]]
+        n, d = m
+        m = t
+    return (n, (d - a * n) // b, d)
 
 
 def factor(n):
@@ -104,7 +118,7 @@ def sum_divisors(n):
         Returns the sum of the proper divisors of n.
     '''
     factors = factor(n)
-    return prod((p**(e+1) - 1) // (p-1) for p, e in factors) - n
+    return prod((p**(e + 1) - 1) // (p - 1) for p, e in factors) - n
 
 
 def is_perfect(n):
@@ -136,8 +150,8 @@ def generate_abundant(n):
         Returns a list where the i-th entry is True when i is abundant and
         False otherwise, i.e. it generates all the abundant numbers up to n
     '''
-    abundantNumbers = [0]*(n+1)
-    for k in range(2, n+1):
+    abundantNumbers = [0] * (n + 1)
+    for k in range(2, n + 1):
         if not abundantNumbers[k] and is_abundant(k):
             for i in range(k, n + 1, k):
                 abundantNumbers[i] = 1
@@ -145,5 +159,4 @@ def generate_abundant(n):
 
 
 if __name__ == "__main__":
-    setup1 = "from __main__ import generate_abundant"
-    print(timeit.timeit("generate_abundant(10**5)", setup=setup1, number=1))
+    print(extended_euclidian(7, 999999))
