@@ -159,4 +159,4 @@ def generate_abundant(n):
 
 
 if __name__ == "__main__":
-    print(extended_euclidian(7, 999999))
+    print(sieve_eratosthenes(20))
