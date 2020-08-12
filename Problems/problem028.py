@@ -14,8 +14,6 @@ def problem028(n):
         one can check this with induction :).
     '''
     assert (n - 1) % 2 == 0
-    if n == 1:
-        return 1
     m = (n - 1) // 2
     return 2 * m * (8 * m**2 + 15 * m + 13) // 3 + 1
 
