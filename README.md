@@ -14,3 +14,5 @@ e.g. problem 23.
 
 - [ ] Possible benchmarking.
 - [ ] Testcase 10 of problem 29 in Hackerrank does not work :(.
+- [ ] Problem 31 is messy.
+- [ ] Hackerrank version of 33-34
