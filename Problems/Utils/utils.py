@@ -1,23 +1,23 @@
-from math import sqrt, ceil, prod
+from math import ceil, prod, sqrt
 
 
 def sieve_eratosthenes(n):
     # generates primes <= n with sieve of erasosthenes
-    primeList = [0] * 2 + [1] * (n - 1)
+    prime_list = [0] * 2 + [1] * (n - 1)
     for i in range(ceil(sqrt(n)) + 1):
-        if primeList[i]:
+        if prime_list[i]:
             for j in range(i**2, n + 1, i):
-                primeList[j] = 0
-    return [i for i, prime in enumerate(primeList) if prime]
+                prime_list[j] = 0
+    return [i for i, prime in enumerate(prime_list) if prime]
 
 
 def sieve_eratosthenes_raw(n):
-    primeList = [0] * 2 + [1] * (n - 1)
+    prime_list = [0] * 2 + [1] * (n - 1)
     for i in range(ceil(sqrt(n)) + 1):
-        if primeList[i]:
+        if prime_list[i]:
             for j in range(i**2, n + 1, i):
-                primeList[j] = 0
-    return primeList
+                prime_list[j] = 0
+    return prime_list
 
 
 def miller_rabin(n):
@@ -39,7 +39,7 @@ def miller_rabin(n):
               (2**64, (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37))]
     if n in (2, 3):
         return 1
-    if n % 2 == 0:
+    if n % 2 == 0 or n == 1:
         return 0
     # determine integers r and d such that n = 2^r * d + 1
     r, d = 0, n - 1
@@ -101,8 +101,8 @@ def factor(n):
         and possibly lower n.
     '''
     factors = []
-    possiblePrimes = sieve_eratosthenes(ceil(sqrt(n)))
-    for prime in possiblePrimes:
+    possible_primes = sieve_eratosthenes(ceil(sqrt(n)))
+    for prime in possible_primes:
         exp = 0
         while n % prime == 0:
             exp += 1
@@ -159,12 +159,12 @@ def generate_abundant(n):
         Returns a list where the i-th entry is True when i is abundant and
         False otherwise, i.e. it generates all the abundant numbers up to n
     '''
-    abundantNumbers = [0] * (n + 1)
+    abundant_numbers = [0] * (n + 1)
     for k in range(2, n + 1):
-        if not abundantNumbers[k] and is_abundant(k):
+        if not abundant_numbers[k] and is_abundant(k):
             for i in range(k, n + 1, k):
-                abundantNumbers[i] = 1
-    return abundantNumbers
+                abundant_numbers[i] = 1
+    return abundant_numbers
 
 
 if __name__ == "__main__":
