@@ -6,7 +6,7 @@ def problem():
     '''
         Returns the sum of all numbers which are equal to the sum of the
         factorial of their digits. See problem030 for an almost equivalent
-        problem with a similair algorithm
+        problem with a similar algorithm
     '''
 
     def convert(num):

@@ -1,18 +1,20 @@
 # projectEuler
-Some project Euler solutions in python. Note that every solution works for
-the matching hackerrank problem after some optimization. For example, for
-problem 12 one needs to store all the triangle numbers with their total number
-of divisors to prevent recomputing.
 
-Secondly, we note that some files contain multiple functions: one for the
-original project Euler problem and one for the harder hackerrank problem. This
-is due to the fact that the problems differ too much to be considered the same function,
-e.g. problem 23.
+Python solutions for various [Project Euler](https://projecteuler.net/)
+problems. So far, I've incorporated the matching HackerRank problem into all
+problems. In some cases, such as [problem 23](src/p023.py), the HackerRank version
+differs from the original problem so much that I simply created a new function.
+Moreover, the Hackerrank version may not work out of the box and some
+memoization is required for the program to pass the test cases. For example,
+in [problem 39](src/p039.py) one would need to compute the results beforehand,
+together with the rolling argmaxium.
 
+For now, there is no desire to use any external packages such as numpy
+to speed up computation. This may change in the future, however, if a lot of
+matrix computations are necessary.
 
-### TODO
+## TODO
 
-- [ ] Possible benchmarking.
-- [ ] Testcase 10 of problem 29 in Hackerrank does not work :(.
-- [ ] Problem 31 is messy.
-- [ ] Hackerrank version of 33-34
+- [ ] Testcase 10 of problem 29 in HackerRank does not work.
+- [ ] HackerRank versions of 29, 32, 33, 34, 38, 40, 67.
+- [ ] Benchmarking?
