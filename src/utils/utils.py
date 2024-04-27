@@ -2,7 +2,9 @@ from math import ceil, prod, sqrt
 
 
 def sieve_eratosthenes(n):
-    # generates primes <= n with sieve of erasosthenes
+    '''
+        Generates all primes <= n with a simple sieve
+    '''
     prime_list = [0] * 2 + [1] * (n - 1)
     for i in range(ceil(sqrt(n)) + 1):
         if prime_list[i]:
@@ -12,6 +14,10 @@ def sieve_eratosthenes(n):
 
 
 def sieve_eratosthenes_raw(n):
+    '''
+        Generates all primes <= n with a simple sieve, but returns a list L
+        whose i-th index is 1 iff i is prime.
+    '''
     prime_list = [0] * 2 + [1] * (n - 1)
     for i in range(ceil(sqrt(n)) + 1):
         if prime_list[i]:
@@ -98,7 +104,7 @@ def factor(n):
         Uses sieve of eratosthenes to generate primes, so only useful for,
         rougly speaking, small numbers. Should use ECM for larger numbers.
         Can possibly be optimized by first storing a few small primes to test
-        and possibly lower n.
+        and lower n.
     '''
     factors = []
     possible_primes = sieve_eratosthenes(ceil(sqrt(n)))
@@ -165,7 +171,3 @@ def generate_abundant(n):
             for i in range(k, n + 1, k):
                 abundant_numbers[i] = 1
     return abundant_numbers
-
-
-if __name__ == "__main__":
-    print(sieve_eratosthenes(20))
