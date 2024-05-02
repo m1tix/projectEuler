@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 def problem(triangle):
     '''
         Returns the largest sum from top to bottom in a triangle
@@ -15,7 +18,7 @@ def problem(triangle):
 
 if __name__ == "__main__":
     trgl = []
-    with open('input/018.txt', 'r') as f:
+    with open(Path(__file__).parent / "input/018.txt", 'r') as f:
         for line in f:
             trgl.append([int(entry) for entry in line.split(' ')])
     print(problem(trgl))

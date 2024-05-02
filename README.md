@@ -24,5 +24,8 @@ matrix computations are necessary.
 
 - [ ] Testcase 10 of problem 29 in HackerRank does not work.
 - [ ] Few testcases of problem 50 in HackerRank do not work (inefficient?)
-- [ ] HackerRank versions of 29, 32, 33, 34, 38, 47, 48, 49, 52, 67.
+- [ ] Wrong answers in problem 70 of HackerRank.
+- [ ] HackerRank versions of 29, 32, 33, 34, 38, 43, 47, 48, 49, 51, 52, 59, 67.
 - [ ] Benchmarking?
+- [ ] Update utilities and use a different algorithm for factoring such
+      as SQUFOF.

@@ -9,6 +9,13 @@ def continued_fraction(d):
         such that 
             sqrt(d) = [a_0; (a_1, a_2, ..., a_r)^*] (same notation as SageMath)
         i.e. the periodic part will be (a_1, ..., a_r)
+
+        Note that this algorithm only works for irrational square roots. In general,
+        for a real number x_0 we can compute the continued fraction iteratively by
+            k = 0;
+            a_k = floor(x_k);
+            x_{k+1} = (x_k - a_k)^{-1};
+            k += 1.
     '''
     a0 = floor(sqrt(d))
     a = a0

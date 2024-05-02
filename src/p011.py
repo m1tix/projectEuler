@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def problem(grid):
     '''
         Returns the greatest product of four adjacent numbers in some direction
@@ -29,7 +31,7 @@ def problem(grid):
 
 
 if __name__ == "__main__":
-    with open("input/011.txt") as f:
+    with open(Path(__file__).parent / "input/011.txt") as f:
         gridText = f.read().splitlines()
     gridInput = []
     for r in gridText:

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def problem(nameList):
     '''
         Let nameList be an alphebetically sorted list of names in uppercases.
@@ -44,7 +46,7 @@ def problem(nameList):
 
 
 if __name__ == "__main__":
-    with open("input/022.txt", "r") as f:
+    with open(Path(__file__).parent / "input/022.txt", 'r') as f:
         raw_text = f.read().replace("\"", "").split(",")
     # python do be easy
     raw_text.sort()

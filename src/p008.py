@@ -1,3 +1,4 @@
+from pathlib import Path
 from math import prod
 
 
@@ -12,7 +13,7 @@ def problem(n, k):
 
 
 if __name__ == "__main__":
-    with open("input/008.txt") as f:
+    with open(Path(__file__).parent / "input/008.txt") as f:
         numberText = f.read().splitlines()
     num = int(''.join(numberText))
     print(problem(num, 13))

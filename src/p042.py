@@ -1,3 +1,4 @@
+from pathlib import Path
 from math import sqrt, floor
 
 def problem(word_list):
@@ -51,7 +52,7 @@ def problem_hackerrank(n):
     return -1
 
 if __name__ == "__main__":
-    with open("input/042.txt") as f:
+    with open(Path(__file__).parent / "input/042.txt") as f:
         # bad hack: should strip newlines but whatever
         words = f.read()[:-1].split(',')
     print(problem(words))
