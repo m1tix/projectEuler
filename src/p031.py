@@ -10,8 +10,9 @@ def problem(target):
         # we thus iteratively update this value while looping over the coins
         for i in range(target - val + 1):
             res[val + i] += res[i]
+        print(res)
     return res[target]
 
 
 if __name__ == "__main__":
-    print(problem(10000))
+    print(problem(200))

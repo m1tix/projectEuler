@@ -25,7 +25,13 @@ matrix computations are necessary.
 - [ ] Testcase 10 of problem 29 in HackerRank does not work.
 - [ ] Few testcases of problem 50 in HackerRank do not work (inefficient?)
 - [ ] Wrong answers in problem 70 of HackerRank.
-- [ ] HackerRank versions of 29, 32, 33, 34, 38, 43, 47, 48, 49, 51, 52, 59, 67.
+- [ ] Check other solutions of problem 88.
+- [ ] New method in problem 61 does not work for all HackerRank test cases.
+- [ ] HackerRank versions of 29, 32, 33, 34, 38, 43, 47, 48, 49, 51, 52, 59, 60,
+      68, 85.
+- [ ] Problem 60 works and is within the one-minute rule, yet it still takes 16
+      seconds. Can it be optimized?
 - [ ] Benchmarking?
 - [ ] Update utilities and use a different algorithm for factoring such
-      as SQUFOF.
+      as SQUFOF. Moreover, divide utilities into multiple files, i.e factoring
+      and generating inside different files.

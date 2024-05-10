@@ -1,4 +1,12 @@
+from collections import defaultdict
 from math import ceil, prod, sqrt
+
+# TODO
+## Split this file into multiple files:
+### gens.py and primes.py (example)
+## Add is_prime with various methods
+## Add factor with various methods
+## Add euler_phi
 
 
 def sieve_eratosthenes(n):
@@ -118,6 +126,23 @@ def factor(n):
     if n != 1:
         return factors + [(n, 1)]
     return factors
+
+def factor_all(b):
+    '''
+        Factor all numbers <= b.
+        Returns a dictionary of dicts whose keys are the numbers 2 to b
+        and the dictionary the prime factors together with their exponents.
+        Only use this for small b as O(b)...
+    '''
+    factor_list = defaultdict(dict)
+    for i in range(2, b + 1):
+        if not factor_list[i]:
+            for j in range(1, b // i + 1):
+                if j % i == 0:
+                    factor_list[j * i][i] = factor_list[j][i] + 1
+                else:
+                    factor_list[j * i][i] = 1
+    return factor_list
 
 
 def number_divisors(n):

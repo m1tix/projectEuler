@@ -17,7 +17,7 @@ def problem(p):
         for s in range(1, r):
             if is_valid(r, s):
                 triple = (r**2 - s**2, 2 * r * s, r**2 + s**2)
-                # If bound on s can be tighter then this statement
+                # If bound on s can be tighter then this condition
                 # is unnecessary.
                 if sum(triple) <= p:
                     pythagorean_triples.append(triple)
