@@ -1,5 +1,8 @@
 # projectEuler
 
+> [!WARNING]
+> This repository contains spoilers to various Project Euler problems.
+
 Python solutions for various [Project Euler](https://projecteuler.net/)
 problems. So far, I've incorporated the matching HackerRank problem into
 (almost) all problems. In some cases, such as [problem 23](src/p023.py), the
@@ -16,9 +19,15 @@ matrix computations are necessary.
 
 ## Favorite problems
 
-- [Problem 66](src/p066.py): amounts to solving a handful of pell equations. As
+- [Problem 66](src/p066.py): amounts to solving a handful of Pell equations. As
   such, the problem can be easily solved by using algebraic number
   theory.
+- [Problem 91](src/p091.py): has a surprising closed form.
+- [Problem 94](src/p094.py): surprising relation to some Pell equation, yielding
+  a recurrence relation that completely solves the problem.
+- [Problem 96](src/p096.py): I have never really programmed an algorithm
+  for solving a sudoku, but it was surprisingly fun!
+- [Problem 100](src/p100.py): similar connection to a Pell equation as 94.
 
 ## TODO
 
